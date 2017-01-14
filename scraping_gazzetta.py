@@ -42,9 +42,10 @@ for match in all_matches:
                     pass
                 count = 1
                 for stat in player.find_all('div',{"class":"inParameter"}):
-                    if count != 9 != '':
+                    if count != 9:
                        try :
-                           datafile.write( str(stat.text).strip() + ',')
+                           datafile.write(stat.text.strip())
+                           datafile.write(',')
                        except:
                             pass   
                     if count == 9:
