@@ -48,7 +48,7 @@ for match in all_matches:
                            datafile.write(',')
                        except:
                             pass   
-                    if count == 9:
+                    else:
                         try :
                             datafile.write( stat.text + '\n')
                         except:
