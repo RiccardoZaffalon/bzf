@@ -6,6 +6,7 @@ Created on Sat Jan 14 09:40:34 2017
 """
 import requests
 import io
+import re
 from bs4 import BeautifulSoup
 last_match=19
 first_match=1
@@ -41,14 +42,14 @@ for match in all_matches:
                     pass
                 count = 1
                 for stat in player.find_all('div',{"class":"inParameter"}):
-                    if count != 2 and count != 9:
+                    if count != 9 != '':
                        try :
-                           datafile.write( stat.get_text()+ ',')
+                           datafile.write( str(stat.text).strip() + ',')
                        except:
                             pass   
                     if count == 9:
                         try :
-                            datafile.write( stat.get_text()+ '\n')
+                            datafile.write( stat.text + '\n')
                         except:
                             pass 
                     count += 1
