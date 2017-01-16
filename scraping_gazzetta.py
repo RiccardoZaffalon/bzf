@@ -36,23 +36,37 @@ for match in all_matches:
                     datafile.write(player.find('span',{"class":"playerNumber"}).get_text()+ ',')
                 except:
                     pass
+                name=player.find('a')['href']
+                split1=string.split(name,'_')
+                split2=string.split(split1[0],'/')
+                try :
+                    datafile.write(split2[-1]+ ',')
+                except:
+                            pass
+                try :
+                    datafile.write(split1[-2]+ ',')
+                except:
+                    pass
+                try :
+                    datafile.write(split1[-1]+ ',')
+                except:
+                    pass
                 try :
                     datafile.write(player.find('span',{"class":"playerRole"}).get_text()+ ',')
                 except:
                     pass
                 count = 1
-                for stat in player.find_all('div',{"class":"inParameter"}):
-                    if count != 9:
+                stats=player.find_all('div',{"class":"inParameter"})
+                num_stat=len(stats)
+                for num in range(0,num_stat-1): 
                        try :
-                           datafile.write(stat.text.strip())
-                           datafile.write(',')
+                           datafile.write(stats[num].text.strip() + ',')
                        except:
                             pass   
-                    else:
-                        try :
-                            datafile.write( stat.text + '\n')
-                        except:
-                            pass 
-                    count += 1
+                    
+                try :
+                    datafile.write( stats[-1].text + '\n')
+                except:
+                    pass 
 datafile.close()
     
