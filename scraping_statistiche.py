@@ -21,19 +21,14 @@ with io.open(filename, 'a', encoding='utf8') as datafile:
         for player in players:
             
             count=1
-            for stat in player.find_all('td'): 
-                if count != 17:
-                    if count != 1: 
+            stats=player.find_all('td')
+            num_stat=len(stats)
+            for num in range(1,num_stat): 
                      try :
-                         datafile.write(stat.text.strip()+ ',')
+                         datafile.write(stats[num].text.strip()+ ',')
                      except:
                          pass
-                else:
-                    try :
-                        datafile.write(stat.text.strip()+ ',')
-                    except:
-                        pass 
-                count += 1
+            
             name=player.find('a')['href']
             split1=string.split(name,'_')
             split2=string.split(split1[0],'/')
