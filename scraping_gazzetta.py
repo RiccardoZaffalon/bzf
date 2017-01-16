@@ -6,7 +6,6 @@ Created on Sat Jan 14 09:40:34 2017
 """
 import requests
 import io
-import string
 from bs4 import BeautifulSoup
 last_match_def=19
 first_match_def=1
@@ -16,58 +15,51 @@ ctrl=False
 while ctrl==False:
     quest1=input('Vuoi tutte le giornate (1 for yes, 0 for no)?')
     if quest1:
-        try:
-            if int(quest1)==1:
-                all=True
-                quest2=input('Fino a quale giornata?')
-                if quest2:
-                    try:
-                        last_match=int(quest2)
-                        first_match=1
-                        ctrl=True
-                    except:
-                        ctrl=False
-                        
-                        
-                        
-                else:
-                   last_match=last_match_def
-                   first_match=first_match_def
-                   all=all_def
-                   ctrl=True
-            elif int(quest1)==0:
-                quest3=input('Quale giornata?')
-                if quest3:
-                
-                    try:
-                        last_match=int(quest3)
-                        all=False
-                        ctrl=True
-                    except:
-                        ctrl=False    
-                else:
-                    last_match=last_match_def
-                    first_match=first_match_def
-                    all=all_def
-                    ctrl=True
-                
-        except:
-            ctrl=False
-    else:
-            quest3=input('Quale giornata?')
-            if quest3:
+        if int(quest1)==1:
+            all=True
+            quest2=input('Fino a quale giornata?')
+            if quest2:
                 try:
-                    last_match=int(quest3)
-                    all=False
+                    last_match=int(quest2)
+                    first_match=1
                     ctrl=True
                 except:
-                    ctrl=False    
+                    ctrl=False
+                    
+                    
             else:
+                ctrl=False
+        elif int(quest1)==0:
+            quest3=input('Quale giornata?')
+            if quest3 is int: 
+    
+                last_match=int(quest3)
+                all=False
+                ctrl=True
+            elif not quest3:
                 last_match=last_match_def
                 first_match=first_match_def
                 all=all_def
                 ctrl=True
+            else:
+                ctrl=False
             
+        else:
+             ctrl=False
+    else:
+            quest3=input('Quale giornata?')
+            if quest3 is int: 
+    
+                last_match=int(quest3)
+                all=False
+                ctrl=True
+            elif not quest3:
+                last_match=last_match_def
+                first_match=first_match_def
+                all=all_def
+                ctrl=True
+            else:
+                ctrl=False
 if not all:
     first_match=last_match
 all_matches=range(first_match, last_match+1)
@@ -94,8 +86,8 @@ for match in all_matches:
                 except:
                     pass
                 name=player.find('a')['href']
-                split1=string.split(name,'_')
-                split2=string.split(split1[0],'/')
+                split1=name.split('_')
+                split2=split1[0].split('/')
                 try :
                     datafile.write(split2[-1]+ ',')
                 except:

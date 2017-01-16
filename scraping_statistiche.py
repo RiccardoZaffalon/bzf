@@ -7,7 +7,6 @@ Created on Sun Jan 15 09:42:20 2017
 
 import requests
 import io
-import string
 from bs4 import BeautifulSoup
 
 req= requests.get('http://www.gazzetta.it/calcio/fantanews/statistiche/serie-a-2016-17/')
@@ -30,8 +29,8 @@ with io.open(filename, 'a', encoding='utf8') as datafile:
                          pass
             
             name=player.find('a')['href']
-            split1=string.split(name,'_')
-            split2=string.split(split1[0],'/')
+            split1=name.split('_')
+            split2=split1[0].split('/')
             try :
                     datafile.write(split2[-1]+ ',')
             except:
