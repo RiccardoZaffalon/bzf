@@ -89,21 +89,12 @@ for match in all_matches:
                 name = player.find('a')['href']
                 # Split unico, prima per '/'
                 name_split = name.split('/')[-1].split('_')
-
-                # Da risolvere nomi variabili es: Hernanes, Daniele De Rossi
-                # Scrivo cognome o nome unico
-                # try :
-                #     datafile.write(name_split[-2] + ',')
-                # except:
-                #     pass
-                # # Scrivo nome se ce l'ha
-                # try :
-                #     datafile.write(name_split[-3] + ',')
-                # # Se non ce l'ha scrivo un trattino
-                # except:
-                #     datafile.write('-' + ',')
-
-                # Codice Giocatore
+                # Codice e Nome Giocatore
+                complete_name = ' '.join(name_split[0:-1])
+                try :
+                    datafile.write(complete_name.title() + ',')
+                except:
+                    pass
                 try :
                     datafile.write(name_split[-1] + ',')
                 except:
