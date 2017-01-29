@@ -1,0 +1,40 @@
+h1
+{
+   font-family: Helvetica, sans-serif; 
+    font-size: 400%;
+    text-align:left ;
+    color:  #000000;
+}
+
+h2
+{
+   font-family: Helvetica, sans-serif;
+    font-size: 300%;
+    text-align:left ;
+    color:  #000000;
+}
+
+h3
+{
+   font-family: Helvetica, sans-serif;
+    font-size: 200%;
+    text-align:left ;
+    color:  #000000;
+    line-height: 125%;
+}
+#ciao
+{
+  height: 10px;
+  width: 200px;
+  float: left;
+}
+.dio
+{
+  height: 10px;
+  width: 200px;
+  float: left;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
